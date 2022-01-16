@@ -1,0 +1,18 @@
+.header{
+    background-color: #222;
+    height:36px;
+    padding: 8px 32px 8px 13px;
+}
+
+
+.app_logo{
+    background-color: #ff7f7f;
+    height: 35px;
+    animation: spinning-logo infinite 8s linear;
+
+}
+@keyframes spinning-logo{
+    from{
+        transform:scaleX(-1.34);
+    }
+} 

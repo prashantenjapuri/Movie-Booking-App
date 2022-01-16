@@ -1,0 +1,43 @@
+.heading{
+    background-color: #ff9999;
+    padding: 8px;
+    text-align: center;
+    font-size: 1 rem;
+}
+
+body{overflow-x: hidden;}
+.flex-container{
+    display: flex;
+    max-width: 90%;
+
+}
+.container{
+    display: flex;
+
+}
+.main{max-width: 100%;}
+.left{
+    max-width: 76%;
+    margin-right: 16px;
+
+}
+.right{
+    max-width: 24%;
+    display: flex;
+    justify-content: center;
+    padding-left:22%;
+    padding-top: 4%;
+}
+
+::-webkit-scrollbar{
+    width:6px;
+
+}
+::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px grey;
+    border-radius:7px;
+}
+::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 15px;
+}
