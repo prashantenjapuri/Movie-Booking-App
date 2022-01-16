@@ -16,9 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import { MenuItem,TextField } from '@material-ui/core';
 import genre from '../../common/genre';
 import artists from '../../common/artists';
-
-
-
   const styles = theme=>({
   root1: {
     backgroundColor: theme.palette.background.paper,
@@ -26,9 +23,9 @@ import artists from '../../common/artists';
     paddingRight:'20%',
   },
   root: {
-
+    
     backgroundColor: theme.palette.background.paper,
-
+    
   },
   imageList: {
     flexWrap: 'nowrap',
@@ -44,17 +41,17 @@ import artists from '../../common/artists';
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
-
+  
   imageList_Released: {
     width: 800,
     height: 350,
     overflow: 'visible',
-
+    
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
-
+  
   titleMovie: {
     fontSize: 14,
   },
@@ -68,12 +65,11 @@ import artists from '../../common/artists';
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
-
+  
   heading:{
     color:theme.palette.primary.light,
   },
 });
-
 class Home extends Component {
   constructor() {
     super();
@@ -87,24 +83,22 @@ class Home extends Component {
       lastDate: "",
       currentGenre: [],
       currentArtist: [],
-
+     
     }
-
+    
   }
-
   componentDidMount() {
     this.setState({ upcoming:moviesData})
     this.setState({ released: moviesData });
     this.setState({ allGenres:genre });
     this.setState({ allArtists:artists });
-
+     
   }
-
-
+  
+  
   //This controls the state of the movie name
   nameSelectorHandler = event => {
     this.setState({ nameOfMovie: event.target.value });
-
   }
   //This controls the state of the genre
   genreHandler = event => {
@@ -122,15 +116,13 @@ class Home extends Component {
   lastDateHandler = event => {
     this.setState({ lastDate: event.target.value });
   }
-
-
+ 
 //This controls the functionality of searching for the movie as required by the user
   applyingCurrentChanges = () => {
     var SpecificMovie = moviesData.filter(item => (item.title.includes(this.state.nameOfMovie) || item.artists.includes(this.state.currentArtist) || item.genres.includes(this.state.currentGenre)));
     // console.log(SpecificMovie);
     this.setState({released:SpecificMovie});
    }
-
   render() {
     const { classes } = this.props;
 
@@ -138,15 +130,15 @@ class Home extends Component {
       <>
 
      { /*  Header Component */}
+      { /*  Header Component */}
       <Header />
 
       { /* Heading */ }
       <div className="heading">
       <span> Upcoming Movies </span>
       </div>
-
+        
     {/*Upcoming Movies List*/}
-
       <div className={classes.root}>
       <ImageList cols={5}  rowHeight={250} className={classes.imageList}>
       {this.state.upcoming.slice(0,6).map(upcomingItem => (
@@ -158,11 +150,9 @@ class Home extends Component {
     </ImageList>
         </div>
        { /* Container*/ }
-
+       
         <div className="flex-container">
-
         {/*Released Movies List */}
-
           <div className="left">
           <div className={classes.root1}>
             <ImageList rowHeight={350} cols={3} gap={30} className={classes.imageList_Released}>
@@ -181,6 +171,7 @@ class Home extends Component {
           </div>
 
          { /* Movie Filter Card */}
+         { /* Movie Filter Card  Working*/}
           <div className="right">
 
             <Card>
@@ -189,14 +180,14 @@ class Home extends Component {
                  FIND MOVIES BY:
                 </Typography>
                  <br></br>
-
+                
                 <FormControl className={classes.formControl}>
                   <InputLabel htmlFor="movieName"> Movie Name </InputLabel>
                   <Input id="movieName" value={this.state.nameOfMovie} onChange={this.nameSelectorHandler} />
                 </FormControl>
-
+               
                 <br></br>
-
+               
                 <FormControl className={classes.formControl}>
                   <InputLabel htmlFor="select-multiple-checkbox">Genre</InputLabel>
                   <Select multiple input={<Input id="select-multiple-checkbox" />} renderValue={selected => selected.join(',')} value={this.state.currentGenre}
@@ -209,7 +200,7 @@ class Home extends Component {
                     ))}
                   </Select>
                 </FormControl>
-
+              
                 <br></br>
                 <FormControl className={classes.formControl}>
                   <InputLabel htmlFor="select-multiple-checkbox">Artists</InputLabel>
@@ -239,22 +230,15 @@ class Home extends Component {
                     APPLY
                     </Button>
                 </FormControl>
-
               </CardContent>
             </Card>
-
-
+          
           </div>
         </div>
-
+       
       </>
-
-
-
+      
     );
-
   }
 }
-
-
 export default withStyles(styles)(Home)
